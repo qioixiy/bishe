@@ -26,7 +26,6 @@ a {
 .header, .footer{ 
     height:50px; 
     overflow:hidden; 
-    background-color:#333; 
 }
 .header{ 
     margin-top:-40px; 

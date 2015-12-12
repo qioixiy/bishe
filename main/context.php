@@ -8,7 +8,7 @@
     <meta name="Description" content="" />
   </head>
 
-  <body>
+  <body onload="setval(1); update_mainframe();">
     <div class="header">
       <h1 align="center">ECU升级管理系统</h1>
     </div>
@@ -28,7 +28,7 @@
               2=>"发布上传版本");
             foreach($lis as $index=>$tips) {
               //echo "<li onmouseout=\"this.style.backgroundColor=''\" onmouseover=\"this.style.backgroundColor='#778899'\"><a href=$href onclick=\"update_mainframe(this)\" >&nbsp;$li&nbsp;</a></li>\n";
-              echo "<li onmouseout=\"this.style.backgroundColor=''\" onmouseover=\"this.style.backgroundColor='#778899'\"><a href=\"javascript:setval($index), update_mainframe(this);\">&nbsp;$tips&nbsp; </a></li>\n";
+              echo "<li onmouseout=\"this.style.backgroundColor=''\" onmouseover=\"this.style.backgroundColor='#778899'\"><a href=\"javascript:setval($index), update_mainframe();\">&nbsp;$tips&nbsp; </a></li>\n";
             }
             ?>
         	</ul>
@@ -78,7 +78,7 @@ function writeObj(obj){
  } 
  alert(description); 
 } 
-function update_mainframe(obj) {
+function update_mainframe() {
 
   xmlHttp = GetXmlHttpObject()
   if (xmlHttp == null) {

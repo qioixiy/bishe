@@ -46,6 +46,7 @@ function listDirTohtml($array)
       		$size = round($size/1024/1024, 3) . "M";
       	}
       	//echo "$str<br />"; 
+      	$_fileatime = date('Y-m-d H:i:s', fileatime("../data/upload/" . $str));
 		echo "
 			<tr>
 				<td valign=\"top\">
@@ -54,7 +55,7 @@ function listDirTohtml($array)
 				<td>
 					<a href=/main/download.php?filename=$str>$str</a>
 				</td>
-				<td align=\"right\">2015-12-09 03:08  </td>
+				<td align=\"right\">$_fileatime</td>
 				<td align=\"right\">$size</td>
 				<td>&nbsp;</td>
 			</tr>";
@@ -62,17 +63,17 @@ function listDirTohtml($array)
 }
 
 ?>
-<h1>Index</h1>
+<h1>...</h1>
 <table>
 	<tr>
 		<th valign="top"><img src="/icons/text.gif" alt="[ICO]"></th>
 		<th><a href="?C=N;O=D">文件名</a></th>
-		<th><a href="?C=M;O=A">大小</a></th>
 		<th><a href="?C=S;O=A">上传时间</a></th>
+		<th><a href="?C=M;O=A">大小</a></th>
 		<th></th>
 	</tr>
 	<tr>
-		<th colspan="5">
+		<th colspan="4">
 			<hr>
 		</th>
 	</tr>
@@ -81,7 +82,7 @@ listDirTohtml(listDir("../data/upload", 1, array()));
 ?> 
 
 <tr>
-	<th colspan="5">
+	<th colspan="4">
 		<hr>
 	</th>
 </tr>
