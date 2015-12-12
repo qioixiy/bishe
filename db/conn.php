@@ -35,10 +35,8 @@ function mysqli_obj_query($mysqli, $sql)
     //echo $sql;
 
     /* Select queries return a resultset */
-    if ($result = $mysqli->query($sql)) {
-        return $result;
-    } else {
-        return null;
-    }
+    $result = $mysqli->query($sql);
+    //echo json_encode($result);
+    return $result;
 }
 ?>
