@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 07, 2015 at 06:42 PM
--- Server version: 5.5.46-0ubuntu0.14.04.2
--- PHP Version: 5.5.9-1ubuntu4.14
+-- Generation Time: Dec 20, 2015 at 12:29 PM
+-- Server version: 5.5.44-0ubuntu0.14.04.1
+-- PHP Version: 5.5.9-1ubuntu4.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,8 +17,33 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
+-- Database: `c9`
+--
+--
 -- Database: `ecu`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `loginStatus`
+--
+
+CREATE TABLE IF NOT EXISTS `loginStatus` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id count',
+  `username` text NOT NULL,
+  `token` varchar(64) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=112 ;
+
+--
+-- Dumping data for table `loginStatus`
+--
+
+INSERT INTO `loginStatus` (`id`, `username`, `token`, `timestamp`) VALUES
+(110, 'test', '5e62ab9e129e47dec87bca0e86253abb', '2015-12-20 11:06:36'),
+(111, 'test', '9f42884748cffda46bc389cff86f24fa', '2015-12-20 11:08:00');
 
 -- --------------------------------------------------------
 
