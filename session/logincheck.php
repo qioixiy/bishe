@@ -1,4 +1,14 @@
 <?php
+
+require_once("../db/conn.php");
+
+#echo file_get_contents("php://input");
+#echo $_POST["username"];
+#echo $_POST["password"];
+$username = $_POST["username"];
+$password = $_POST["password"];
+$token = null;
+$obj = new stdClass();
 function check_username_password($username, $password, &$ret_token)
 {
 	$ret = null;
@@ -29,29 +39,46 @@ function check_username_password($username, $password, &$ret_token)
 	return $ret;
 }
 
-require_once("../db/conn.php");
+function user_login($username, $password) {
+        if($username == "") {
+                echo "<script>alert('please input your username'); history.go(-1);</script>";
+        } else if ($password == "") {
+                echo "<script>alert('please input your password'); history.go(-1);</script>";
+        } else {
+                $result = check_username_password($username, $password, $token);
+                if ("ok" == $result) {
+                        echo "<script language='javascript'>";
+                        echo " location='/main/index.php';";
+                        echo "</script>";
+                } else {
+                        echo "<script>alert('$result'); history.go(-1);</script>";
+                }
+        }
+}
 
-#echo file_get_contents("php://input");
-#echo $_POST["username"];
-#echo $_POST["password"];
-$username = $_POST["username"];
-$password = $_POST["password"];
-$token = null;
-$obj = new stdClass();
-if(isset($_POST["submit"]))	{
-	if($username == "") {
-		echo "<script>alert('please input your username'); history.go(-1);</script>";
-	} else if ($password == "") {
-		echo "<script>alert('please input your password'); history.go(-1);</script>";
-	} else {
-		$result = check_username_password($username, $password, $token);
-		if ("ok" == $result) {
-			echo "<script language='javascript'>";
-			echo " location='/main/index.php';";
-			echo "</script>";
-		} else {
-			echo "<script>alert('$result'); history.go(-1);</script>";
-		}
+function user_signup($username, $password) {
+        if($username == "") {
+                echo "<script>alert('please input your username'); history.go(-1);</script>";
+        } else if ($password == "") {
+                echo "<script>alert('please input your password'); history.go(-1);</script>";
+        } else {
+                $result = check_username_password($username, $password, $token);
+                if ("ok" == $result) {
+                        echo "<script language='javascript'>";
+                        echo " location='/main/footer.php';";
+                        echo "</script>";
+                } else {
+                        echo "<script>alert('$result'); history.go(-1);</script>";
+                }
+        }
+}
+
+if(isset($_POST["submit"])) {
+	$submit_type = $_POST["submit"];
+	if ($submit_type == "Login" ) {
+		user_login($username, $password);
+	} else if ($submit_type == "SignUp") {
+		user_signup($username, $password);
 	}
 } else if (isset($_POST["device"])) {
 

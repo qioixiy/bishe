@@ -44,11 +44,12 @@
             <!--/#login.form-action-->
             <div id="register" class="form-action hide">
                 <p>注册新的用户名</p>
-                <form>
+                <form action="./regcheck.php" method="post">
                     <ul>
-                        <li><input type="text" placeholder="用户名" /></li>
-                        <li><input type="password" placeholder="密码" /></li>
-                        <li><input type="submit" value="Sign Up" class="button" /></li>
+                        <li><input type="text" name="username" placeholder="用户名" /></li>
+                        <li><input type="password" name="password" placeholder="密码" /></li>
+			<li><input type="text" name="email" placeholder="邮箱" /></li>
+                        <li><input type="submit" name="submit" value="Signup" class="button" /></li>
                     </ul>
                 </form>
             </div>
@@ -57,9 +58,9 @@
                 <p>重置密码，发送新的密码到邮箱</p>
                 <form>
                     <ul>
-                        <li><input type="text" placeholder="用户名" /></li>
-                        <li><input type="text" placeholder="邮箱" /></li>
-                        <li><input type="submit" value="Send" class="button" /></li>
+                        <li><input type="text" name="username" placeholder="用户名" /></li>
+                        <li><input type="text" name="email" placeholder="邮箱" /></li>
+                        <li><input type="submit" name="submit" value="Reset" class="button" /></li>
                     </ul>
                 </form>
             </div>
