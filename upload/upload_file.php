@@ -1,4 +1,7 @@
 <?php
+
+require_once("../db/conn.php");
+
 $retString="";
 
 if (true/*(($_FILES["file"]["type"] == "image/gif")
@@ -16,6 +19,8 @@ if (true/*(($_FILES["file"]["type"] == "image/gif")
             "Temp file: " . $_FILES["file"]["tmp_name"];
         }
 
+	$filename = $_FILES["file"]["name"];
+	$size = $_FILES["file"]["size"];
         $tmp_filename = $_FILES["file"]["tmp_name"];
         $dest_filename = "../data/upload/" . $_FILES["file"]["name"];
         if (file_exists($dest_filename)) {
@@ -24,6 +29,10 @@ if (true/*(($_FILES["file"]["type"] == "image/gif")
         } else {
             if (move_uploaded_file($tmp_filename, $dest_filename)) {
                 $retString = "Stored in: " . $dest_filename;
+		$mysqli = mysqli_new();
+		$md5 = md5_file($dest_filename);
+		$sql="INSERT INTO `uploadStatus`(`filename`, `size`, `version`, `md5`) VALUES ('$filename', '$size', '$filename', '$md5')";
+		$result = mysqli_obj_query($mysqli, $sql);
             } else {
                 $err = 1;
                 $retString = "move_uploaded_file error";
